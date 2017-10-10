@@ -28,7 +28,7 @@ example of repo URL: https://api.github.com/repos/jquery/jquery/contributors
 ----------------------
 
 Questions?
-What exactly is the responce anyway
+What exactly is the response anyway
 
 
 
