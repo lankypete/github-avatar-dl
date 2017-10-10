@@ -15,6 +15,12 @@ const urlConfig = {
 };
 
 function getRepoContributors(author, repo) {
+  //A simple if statement to end function if parameters are invalid
+  if( author === undefined || repo === undefined ) {
+    console.log('Please enter a valid Account and Repo name')
+    return;
+  }
+
   //A couple welcome messages
   console.log('Welcome to the GitHub Avatar Downloader!')
   console.log('The users avatars of the ' + repo + ' repo will be added to the Avatars directory!')
@@ -25,9 +31,16 @@ function getRepoContributors(author, repo) {
 
   //Use the request method the build an array of each contributor
   request( urlConfig , function(err, res, body){
-    if(err) console.log('Errors: ', err);
+    if(err) { console.log('Errors: ', err); return; };
 
+    //Parse the body of the response to an object
     const users = JSON.parse(body);
+
+    //Check the responce for a message "not found" which will be an error
+    if(users.message === 'Not Found') {
+      console.log('\n!!! Something Went Wrong, There\'s no data on this repository !!!\n');
+      return;
+    }
 
     //Build an array with more specific properties,
     //All we need is the Username and Avatar URL
