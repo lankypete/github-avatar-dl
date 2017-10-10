@@ -1,36 +1,20 @@
 const fs = require('fs'),
-request = require('request');
-require('dotenv').config();
-//Define the variables used to access the github API
-const GITHUB_U = process.env.GIT_USER;
-const GITHUB_T = process.env.GIT_TOKEN;
-const urlConfig = {
-    //The URL will be added in the function
-    method: 'GET',
-    headers: {
-        'Accept': 'application/json',
-        'Accept-Charset': 'utf-8',
-        'User-Agent': 'GitHub Avatar Downloader - Student Project'
-    }
-};
+request = require('request'),
+inputConfig = require('./inputConfig'),
+errors = require('./errors.js');
 
 function getRepoContributors(author, repo) {
-  //A simple if statement to end function if parameters are invalid
-  if( author === undefined || repo === undefined ) {
-    console.log('Please enter a valid Account and Repo name')
-    return;
-  }
-
   //A couple welcome messages
   console.log('Welcome to the GitHub Avatar Downloader!')
-  console.log('The users avatars of the ' + repo + ' repo will be added to the Avatars directory!')
 
-  //Firstly, we build an array of contributors to a repo
-  //This is the specific project API URL
-  urlConfig.url = `https://${GITHUB_U}:${GITHUB_T}@api.github.com/repos/${author}/${repo}/contributors`;
+  //Call the config function now that we have all inputs
+  const inputObj = inputConfig.inputConfig(author, repo);
+
+  //if input Obj was return undefined, we cannot proceed
+  if(!inputObj) { return; }
 
   //Use the request method the build an array of each contributor
-  request( urlConfig , function(err, res, body){
+  request( inputObj , function(err, res, body){
     if(err) { console.log('Errors: ', err); return; };
 
     //Parse the body of the response to an object
@@ -38,7 +22,7 @@ function getRepoContributors(author, repo) {
 
     //Check the responce for a message "not found" which will be an error
     if(users.message === 'Not Found') {
-      console.log('\n!!! Something Went Wrong, There\'s no data on this repository !!!\n');
+      errors.apiEmptyError(repo);
       return;
     }
 
@@ -80,35 +64,4 @@ module.exports = {
   getRepoContributors: getRepoContributors,
   downloadImageByURL: downloadImageByURL
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
