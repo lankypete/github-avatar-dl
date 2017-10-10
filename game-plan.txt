@@ -19,3 +19,16 @@ IMPLEMENTS
 request library
 git version control
 
+TOKEN: bf20d225f96dd06c538f3fe8b7eedbee31303174
+
+example of repo URL: https://api.github.com/repos/jquery/jquery/contributors
+
+
+
+----------------------
+
+Questions?
+What exactly is the responce anyway
+
+
+

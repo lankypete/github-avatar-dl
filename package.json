@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/lankypete/github-avatar-dl/issues"
   },
-  "homepage": "https://github.com/lankypete/github-avatar-dl#readme"
+  "homepage": "https://github.com/lankypete/github-avatar-dl#readme",
+  "dependencies": {
+    "request": "^2.83.0",
+    "stringify-object": "^3.2.1"
+  }
 }
