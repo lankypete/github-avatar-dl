@@ -1,0 +1,21 @@
+INPUT
+-----
+
+from the command line the inputs will be,
+any combination of repo-owner + repo combination
+
+ex
+node download_avatars.js jquery jquery
+
+FUNCTIONAL
+---
+download all the contributors' profile images and save into sub directory avatars/
+
+-images correspond to avatars of the contributors
+the name of each image file should be the contributor's name ex johnny.png
+
+IMPLEMENTS
+---
+request library
+git version control
+

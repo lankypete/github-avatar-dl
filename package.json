@@ -1,0 +1,24 @@
+{
+  "name": "github-avatar-downloader",
+  "version": "1.0.0",
+  "description": "Lighthouse Labs project 1",
+  "main": "na",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lankypete/github-avatar-dl.git"
+  },
+  "keywords": [
+    "github",
+    "avatar",
+    "downloader"
+  ],
+  "author": "Dean Glueckler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lankypete/github-avatar-dl/issues"
+  },
+  "homepage": "https://github.com/lankypete/github-avatar-dl#readme"
+}
